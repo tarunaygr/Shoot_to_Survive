@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class Gun_script : MonoBehaviour
 {
     public float rof;
-    public int mag_size=8,fired_count;
+    public int mag_size,fired_count;
     public GameObject bullet_prefab;
     public Transform bullet_spawnpoint;
     public Animator Gun_anim;
     public bool canFire;
-    float bullet_speed = 1000f;
+    float bullet_speed;
     public Text BulletCount;
+    public Weapon_Inventory weapon_class;
 
    /* private void LateUpdate()
     {
@@ -21,6 +22,9 @@ public class Gun_script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rof = weapon_class.rof;
+        bullet_speed = weapon_class.muzzle_vel;
+        mag_size = weapon_class.MagSize;
         Gun_anim = GetComponent<Animator>();
         fired_count = 0;
         canFire = true;
